@@ -86,4 +86,6 @@ func apiRegisterEndpoints(router *httprouter.Router) {
 
 	router.GET("/v1/neighbours", endpoint(apiListNeighbours))
 	router.GET("/v1/neighbours/:id", endpoint(apiShowNeighbour))
+
+	router.GET("/v1/neighbours/:id/routes", endpoint(apiShowRoutes))
 }
