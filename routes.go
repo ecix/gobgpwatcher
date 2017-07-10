@@ -5,7 +5,6 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 
-	"github.com/osrg/gobgp/packet/bgp"
 	"github.com/osrg/gobgp/table"
 )
 
@@ -15,9 +14,12 @@ func apiShowRoutes(req *http.Request, params httprouter.Params) (ApiResponse, er
 		return nil, err
 	}
 
+	// Get route family
+	family := routeFamilyFromAddr(neighbourId)
+
 	// Get routes
 	prefixes := make([]*table.LookupPrefix, 0)
-	rib, err := GoBGP.GetLocalRIB(neighbourId, bgp.RF_IPv4_UC, prefixes)
+	rib, err := GoBGP.GetLocalRIB(neighbourId, family, prefixes)
 	if err != nil {
 		return nil, err
 	}
