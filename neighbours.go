@@ -16,7 +16,12 @@ func apiListNeighbours(req *http.Request, params httprouter.Params) (ApiResponse
 }
 
 func apiShowNeighbour(req *http.Request, params httprouter.Params) (ApiResponse, error) {
+	id, err := validateNotEmpty(params.ByName("id"))
+	if err != nil {
+		return nil, err
+	}
 
 	// Get a single neighbour
-	return "implement me", nil
+	neighbour, err := GoBGP.GetNeighbor(id)
+	return neighbour, err
 }

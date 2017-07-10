@@ -22,7 +22,8 @@ import (
 // Endpoints:
 //
 //    Neighbours
-//       Show All      /v1/neighbours
+//       List          /v1/neighbours
+//       Show          /v1/neighbours/:id
 //
 //    Routes
 //       Show Id       /v1/neighbours/:id/routes
