@@ -30,7 +30,12 @@ import (
 //
 
 type ErrorResponse struct {
-	Error string `json: "error"`
+	Error string `json:"error"`
+}
+
+type ApiResponse struct {
+	Meta   map[string]interface{} `json:"meta"`
+	Result ApiResult              `json:"result"`
 }
 
 type ApiResult interface{}
@@ -53,8 +58,13 @@ func endpoint(wrapped apiEndpoint) httprouter.Handle {
 			return
 		}
 
+		// Wrap into response
+		response := ApiResponse{
+			Result: result,
+		}
+
 		// Encode json
-		payload, err := json.Marshal(result)
+		payload, err := json.Marshal(response)
 		if err != nil {
 			msg := "Could not encode result as json"
 			http.Error(res, msg, http.StatusInternalServerError)
