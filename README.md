@@ -2,14 +2,14 @@
 Like birdwatcher, just for gobgp
 
 
-# API
+## API
 
 The following api endpoint are implemented right now:
 
-  ShowStatus          /v1/status
+    ShowStatus          /v1/status
   
-  ListNeighbours      /v1/neighbours
-  ShowNeighbour       /v1/neighbours/:id
+    ListNeighbours      /v1/neighbours
+    ShowNeighbour       /v1/neighbours/:id
   
-  ListRoutes          /v1/neighbours/:id/routes
+    ListRoutes          /v1/neighbours/:id/routes
   
