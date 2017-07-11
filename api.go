@@ -33,8 +33,8 @@ type ErrorResponse struct {
 	Error string `json: "error"`
 }
 
-type ApiResponse interface{}
-type apiEndpoint func(*http.Request, httprouter.Params) (ApiResponse, error)
+type ApiResult interface{}
+type apiEndpoint func(*http.Request, httprouter.Params) (ApiResult, error)
 
 // Wrap handler for access controll, throtteling and compression
 func endpoint(wrapped apiEndpoint) httprouter.Handle {

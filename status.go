@@ -9,7 +9,7 @@ import (
 // Get the gobgpd status and provide
 // additional information about the gobgpwatcher
 
-func apiShowStatus(req *http.Request, params httprouter.Params) (ApiResponse, error) {
+func apiShowStatus(req *http.Request, params httprouter.Params) (ApiResult, error) {
 
 	server, err := GoBGP.GetServer()
 
