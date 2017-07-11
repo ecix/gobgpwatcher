@@ -11,8 +11,14 @@ import (
 
 func apiShowStatus(req *http.Request, params httprouter.Params) (ApiResponse, error) {
 
-	return map[string]string{
-		"version": "23.42",
-		"foo":     "implement me.",
-	}, nil
+	server, err := GoBGP.GetServer()
+
+	status := map[string]interface{}{
+		"gobgp": server,
+		"api": map[string]interface{}{
+			"version": "0.1.0",
+		},
+	}
+
+	return status, err
 }
