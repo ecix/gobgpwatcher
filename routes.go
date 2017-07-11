@@ -8,7 +8,7 @@ import (
 	"github.com/osrg/gobgp/table"
 )
 
-func apiShowRoutes(req *http.Request, params httprouter.Params) (ApiResponse, error) {
+func apiShowRoutes(req *http.Request, params httprouter.Params) (ApiResult, error) {
 	neighbourId, err := validateNotEmpty(params.ByName("id"))
 	if err != nil {
 		return nil, err
